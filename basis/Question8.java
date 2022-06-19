@@ -16,9 +16,6 @@ public class Question8 {
 		// scanner定義
 		Scanner scanner = new Scanner(System.in);
 
-		// 合計値の定義
-		int sum = 0;
-
 		System.out.println("整数の数を入力してください");
 
 		try {
@@ -41,6 +38,9 @@ public class Question8 {
 
 			System.out.println("整数の各値を入力してください");
 
+		    // 合計値の定義
+		    int sum = 0;			
+
 			for (int i = 0; i < num; i++) { // 配列の値を出力
 
 				String word1 = scanner.nextLine(); // 文字入力
@@ -52,7 +52,14 @@ public class Question8 {
 				sum += score.get(i); //合計値の計算
 			}
 
-			System.out.println("入力された値は" + score + "です");
+			// 値の出力
+			System.out.print("入力された値は");
+
+			for (int value : score) { //配列の値を1つずつ出力
+				System.out.print(value + " ");
+			}
+
+			System.out.println("です");
 
 			// 平均値の計算
 			int ave = sum / score.size();
