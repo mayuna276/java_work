@@ -1,6 +1,6 @@
 package java_basic.Question5;
 
-public class Main {
+public class Question5 {
 
 	public static void main(String[] args) {
 

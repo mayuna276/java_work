@@ -1,6 +1,6 @@
 package java_basic.Question6;
 
-public class Main {
+public class Question6 {
 
 	public static void main(String[] args) {
 		System.out.println("本日の曜日番号を入力してください");
