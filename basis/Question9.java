@@ -26,24 +26,12 @@ public class Question9 {
 
 			int work = 0; //退避用のworkの定義
 
-			int intMax = array[0]; //最大値の定義
-
-			int intMin = array[0]; //最小値の定義
-
 			for (int j = 0; j < array.length - 1; j++) { //繰り返し処理（先頭の値）
 				for (int k = j + 1; k < array.length; k++) { //繰り返し処理（隣接する値）
 					if (array[j] > array[k]) { //jがkより値が大きい場合
 						work = array[j]; // jをworkに退避
 						array[j] = array[k]; // kをjに移動
 						array[k] = work; //jをkに移動
-					}
-
-					if (intMax < array[j]) { //array[0]より大きい場合
-						intMax = array[j]; //最大値の変更
-					}
-
-					if (intMin > array[j]) { //array[0]より小さい場合
-						intMin = array[j]; //最小値の変更
 					}
 				}
 			}
@@ -55,9 +43,9 @@ public class Question9 {
 			System.out.println("です");
 
 			// 最大値を出力
-			System.out.println("最大値は" + intMax + "です");
+			System.out.println("最大値は" + array[4] + "です");
 			// 最小値を出力
-			System.out.println("最小値は" + intMin + "です");
+			System.out.println("最小値は" + array[0] + "です");
 
 		} catch (NumberFormatException e) {// 整数以外が入力された場合
 			System.out.println("整数以外の値が出力されました");
