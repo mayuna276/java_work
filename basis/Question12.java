@@ -20,27 +20,27 @@ public class Question12 {
 
 		try {
 			//番号入力
-			String namenum = scanner.nextLine();
-			int num = Integer.parseInt(namenum);
+			String nameNum = scanner.nextLine();
+			int num = Integer.parseInt(nameNum);
 
 			switch (num) {
 
-			case 1: // 1が入力された場合
-				System.out.println("氏名を入力してください");
-				String name = scanner.nextLine();
-				// Personメソッド呼び出し
-				Person n1 = new Person(name);
-				n1.setName(name);
-				System.out.println("私の名前は" + n1.getName() + "です");
+				case 1: // 1が入力された場合
+					System.out.println("氏名を入力してください");
+					System.out.print("氏名：");
+					String name = scanner.nextLine();
+					// Personメソッド呼び出し
+					Person n1 = new Person(name);
+					System.out.println("私の名前は" + n1.getName() + "です");
 
-				break;
+					break;
 
-			case 2: // 2が入力された場合
-				// Personメソッド呼び出し
-				Person n2 = new Person();
-				System.out.println("私の名前は" + n2.getName() + "です");
+				case 2: // 2が入力された場合
+					// Personメソッド呼び出し
+					Person n2 = new Person();
+					System.out.println("私の名前は" + n2.getName() + "です");
 
-				break;
+					break;
 
 			default: // 1、2以外の値が入力されたとき
 				System.out.println("1～2の範囲で入力してください");
