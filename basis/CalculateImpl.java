@@ -13,8 +13,8 @@ public class CalculateImpl implements Calculate {
 	}
 
 	// 割り算処理
-	public int division(int calculateMulti, int DIVISION_NUMBER) {
-		int calculateDivi = calculateMulti / DIVISION_NUMBER;
+	public int division(int calculateMulti, int division_number) {
+		int calculateDivi = calculateMulti / division_number;
 		return calculateDivi;
 	}
 }
