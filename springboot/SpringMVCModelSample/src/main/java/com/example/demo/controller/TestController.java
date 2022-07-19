@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping
-
 public class TestController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	@GetMapping("test")
 	public String test(Model model) {
-		List<Map<String, Object>> user = jdbcTemplate.queryForList("select * from user");
+		String sql ="SELECT name, email FROM user WHERE id=1001";
+		List<String> user = jdbcTemplate.queryForList(sql);
 		model.addAttribute("UserList", user);
 
 		return "test";
