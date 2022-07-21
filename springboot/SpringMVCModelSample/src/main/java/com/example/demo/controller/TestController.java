@@ -17,8 +17,7 @@ public class TestController {
 
 	@GetMapping("test")
 	public String test(Model model) {
-		String sql ="SELECT name, email FROM user WHERE id=1001";
-		List<String> user = jdbcTemplate.queryForList(sql);
+		List user = jdbcTemplate.queryForList("SELECT name, email FROM user WHERE id=1001");
 		model.addAttribute("UserList", user);
 
 		return "test";
