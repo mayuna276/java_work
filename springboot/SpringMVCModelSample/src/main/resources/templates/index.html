@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タイムライン</title>
+</head>
+<body>
+	<header>
+		<h1>タイムライン</h1>
+	</header>
+	<table border="1">
+		<tr>
+			<th>タイトル</th>
+			<th>つぶやき</th>
+			<th>更新日</th>
+		</tr>
+		<tr th:each="list : ${List}">
+			<td th:text="${title}"></td>
+			<td th:text="${murmur}"></td>
+			<td th:text="${update}"></td>
+		</tr>
+	</table>
+</body>
+</html>
