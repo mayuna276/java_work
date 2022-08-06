@@ -1,0 +1,9 @@
+CREATE TABLE boards
+(
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	title VARCHAR(20) NOT NULL,
+	content VARCHAR(140) NOT NULL,
+	created_at DATETIME,
+	updated_at DATETIME,
+	PRIMARY KEY(id)
+);
