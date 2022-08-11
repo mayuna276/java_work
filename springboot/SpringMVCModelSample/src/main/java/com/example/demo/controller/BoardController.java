@@ -11,7 +11,7 @@ import com.example.demo.entity.Board;
 import com.example.demo.service.BoardService;
 
 @Controller
-@RequestMapping("board")
+@RequestMapping("/board")
 public class BoardController {
 
 	private final BoardService boardService;
@@ -21,12 +21,14 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 
-	@GetMapping("index")
+	@GetMapping("/index")
 	public String index(Model model) {
 
 		//BoardServiceからリストを取得する
 		List<Board> returnList = boardService.getAll() ;
 
-		return "board/index";
+		model.addAttribute("returnList", returnList);
+
+		return "index";
 	}
 }

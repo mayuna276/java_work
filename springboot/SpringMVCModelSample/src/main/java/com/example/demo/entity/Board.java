@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * Boardエンティティ
@@ -13,7 +13,7 @@ public class Board {
 	private int id;
 	private String title;
 	private String murmur;
-	private Timestamp update;
+	private LocalDateTime update;
 
 	// getter
 
@@ -29,7 +29,7 @@ public class Board {
 		return murmur;
 	}
 
-	public Timestamp getUpdate() {
+	public LocalDateTime getUpdate() {
 		return update;
 	}
 
@@ -46,7 +46,7 @@ public class Board {
 		this.murmur = murmur;
 	}
 
-	public void setUpdate(Timestamp update) {
+	public void setUpdate(LocalDateTime update) {
 		this.update = update;
 	}
 }

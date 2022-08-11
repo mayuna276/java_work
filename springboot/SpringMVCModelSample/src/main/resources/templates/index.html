@@ -14,10 +14,10 @@
 			<th>つぶやき</th>
 			<th>更新日</th>
 		</tr>
-		<tr th:each="list : ${List}">
-			<td th:text="${title}"></td>
-			<td th:text="${murmur}"></td>
-			<td th:text="${update}"></td>
+		<tr th:each="list : ${retrunList}">
+			<td th:text="${list.title}"></td>
+			<td th:text="${list.murmur}"></td>
+			<td th:text="${list.update}"></td>
 		</tr>
 	</table>
 </body>
