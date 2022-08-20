@@ -15,7 +15,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container-fluid">
+		<div class="container">
 			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -27,6 +27,7 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="#">Simple Board</a></li>
+						<button type="button" class="btn btn-link">Simple Board</button>
 			</div>
 		</div>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -46,6 +47,7 @@
 				<th scope="col">タイトル</th>
 				<th scope="col">つぶやき</th>
 				<th scope="col">更新日</th>
+				<th scope="col">詳細</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -53,6 +55,8 @@
 				<td th:text="${list.title}"></td>
 				<td th:text="${list.murmur}"></td>
 				<td th:text="${list.update}"></td>
+				<td><button type="button" class="btn btn-outline-light">みる</button></td>
+
 		</tbody>
 		</div>
 	</table>
