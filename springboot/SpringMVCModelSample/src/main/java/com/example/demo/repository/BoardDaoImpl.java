@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,12 @@ public class BoardDaoImpl implements BoardDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+
 @Override
+
+	/**findAllメソッド
+	 *
+	 */
 	public List<Board> findAll() {
 		List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM boards ORDER BY updated_at desc");
 
@@ -42,4 +48,19 @@ public class BoardDaoImpl implements BoardDao {
 		 return returnList;
 	}
 
+	/**findByIdメソッド
+	 *つぶやきidを元にboardsテーブルのレコードを1件取得する
+	 */
+
+	  public Board findById(int id) {
+		Map<String, Object> detailList = jdbcTemplate.queryForMap("SELECT * FROM boards where id = ?");
+
+		Board board = new Board(); //boardインスタンスの生成
+
+		int boardId = (int)detailList.get("id");
+		String title = (String)detailList.get("title");
+		String murmur = (String)detailList.get("content");
+		LocalDateTime update = (LocalDateTime)detailList.get("updated_at");
+	}
+	  return board;
 }

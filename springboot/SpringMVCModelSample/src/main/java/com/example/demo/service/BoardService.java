@@ -6,4 +6,6 @@ import com.example.demo.entity.Board;
 
 public interface BoardService {
 	List<Board> getAll();
+
+	Board getBoard(int id);
 }

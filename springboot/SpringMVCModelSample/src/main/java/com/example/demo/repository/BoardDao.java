@@ -6,4 +6,6 @@ import com.example.demo.entity.Board;
 
 public interface BoardDao {
 	List<Board> findAll();
+
+	Board findById(int id);
 }

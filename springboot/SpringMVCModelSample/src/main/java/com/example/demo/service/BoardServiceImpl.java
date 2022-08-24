@@ -21,4 +21,11 @@ public class BoardServiceImpl implements BoardService {
 		//BoardDaoImplへデータを返却する
 		return dao.findAll();
 	}
+
+	@Override
+	//BoardDaoImplへデータを返却する
+	public Board getBoard (int id) {
+		return dao.findById(id);
+	}
+
 }
