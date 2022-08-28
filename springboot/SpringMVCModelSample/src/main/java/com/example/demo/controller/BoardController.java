@@ -49,7 +49,7 @@ public class BoardController {
 	 */
 	@GetMapping("/show/{id}")
 	public String show(@PathVariable int id ,Model model) {
-		Board board = boardService.getBoard(int) ;
+		Board board = boardService.getBoard(id) ;
 
 		model.addAttribute("detailList", board);
 

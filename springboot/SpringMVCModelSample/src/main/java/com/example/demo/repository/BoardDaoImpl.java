@@ -53,14 +53,17 @@ public class BoardDaoImpl implements BoardDao {
 	 */
 
 	  public Board findById(int id) {
-		Map<String, Object> detailList = jdbcTemplate.queryForMap("SELECT * FROM boards where id = ?");
+		Map<String, Object> detailList = jdbcTemplate.queryForMap("SELECT * FROM boards where id = ?",id);
 
 		Board board = new Board(); //boardインスタンスの生成
 
 		int boardId = (int)detailList.get("id");
 		String title = (String)detailList.get("title");
 		String murmur = (String)detailList.get("content");
+
 		LocalDateTime update = (LocalDateTime)detailList.get("updated_at");
+
+		 return board;
 	}
-	  return board;
+
 }
