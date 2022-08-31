@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -57,11 +56,10 @@ public class BoardDaoImpl implements BoardDao {
 
 		Board board = new Board(); //boardインスタンスの生成
 
-		int boardId = (int)detailList.get("id");
-		String title = (String)detailList.get("title");
-		String murmur = (String)detailList.get("content");
-
-		LocalDateTime update = (LocalDateTime)detailList.get("updated_at");
+		board.setId((int)detailList.get("id"));
+		board.setTitle((String)detailList.get("title"));
+		board.setMurmur((String)detailList.get("content"));
+		board.setUpdate(((Timestamp)detailList.get("updated_at")).toLocalDateTime());
 
 		 return board;
 	}

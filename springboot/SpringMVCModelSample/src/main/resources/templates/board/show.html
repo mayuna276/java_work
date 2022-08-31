@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>つぶやき詳細</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<nav th:replace="~{block/header::header}"></nav>
+
+	<header>
+		<div class="text-center">
+			<p class="fs-1">つぶやき詳細</p>
+		</div>
+	</header>
+
+	<div class="mb-3 container" th:object="${board}">
+		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
+		<input type="text" class="form-control" aria-label="Disabled input example" th:value="*{title}" disabled>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
+			<textarea class="form-control" type="text" placeholder=""
+				aria-label="Disabled input example" th:field="*{murmur}" disabled></textarea>
+		</div>
+		<button type="button" class="btn btn-secondary">一覧へ戻る</button>
+		<button type="button" class="btn btn-primary">編集</button>
+		<button type="button" class="btn btn-danger">削除</button>
+	</div>
+</body>
+</html>

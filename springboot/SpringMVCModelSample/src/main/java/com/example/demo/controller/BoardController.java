@@ -53,6 +53,6 @@ public class BoardController {
 
 		model.addAttribute("detailList", board);
 
-		return "show/{id}";
+		return "show";
 	}
 }
