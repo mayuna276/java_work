@@ -40,7 +40,7 @@ public class BoardController {
 
 		model.addAttribute("returnList", returnList);
 
-		return "index";
+		return "board/index";
 	}
 
 	/**
@@ -51,8 +51,8 @@ public class BoardController {
 	public String show(@PathVariable int id ,Model model) {
 		Board board = boardService.getBoard(id) ;
 
-		model.addAttribute("detailList", board);
+		model.addAttribute("board", board);
 
-		return "show";
+		return "board/show";
 	}
 }

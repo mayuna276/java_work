@@ -24,15 +24,30 @@
 
 	<div class="mb-3 container" th:object="${board}">
 		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
-		<input type="text" class="form-control" aria-label="Disabled input example" th:value="*{title}" disabled>
+		<input type="text" class="form-control"
+			aria-label="Disabled input example" th:value="*{title}" disabled>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 			<textarea class="form-control" type="text" placeholder=""
 				aria-label="Disabled input example" th:field="*{murmur}" disabled></textarea>
 		</div>
-		<button type="button" class="btn btn-secondary">一覧へ戻る</button>
-		<button type="button" class="btn btn-primary">編集</button>
-		<button type="button" class="btn btn-danger">削除</button>
+		<div class="d-flex">
+			<div class="me-3">
+				<a href="#" th:href="@{/board/index}">
+					<button type="button" class="btn btn-secondary">一覧へ戻る</button>
+				</a>
+			</div>
+			<div class="me-3">
+				<a href="#">
+					<button type="button" class="btn btn-primary">編集</button>
+				</a>
+			</div>
+			<div class="me-3">
+				<a href="#">
+					<button type="button" class="btn btn-danger">削除</button>
+				</a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
