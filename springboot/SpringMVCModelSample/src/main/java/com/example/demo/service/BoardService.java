@@ -8,4 +8,6 @@ public interface BoardService {
 	List<Board> getAll();
 
 	Board getBoard(int id);
+
+	void save(Board board);
 }

@@ -55,4 +55,14 @@ public class BoardController {
 
 		return "board/show";
 	}
+
+	/**
+	 * つびやき登録画面
+	 *
+	 */
+	@GetMapping("/create")
+	public String create(Model model) {
+
+		return "board/create";
+	}
 }

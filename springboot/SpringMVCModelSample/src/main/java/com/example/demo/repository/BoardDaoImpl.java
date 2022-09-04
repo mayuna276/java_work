@@ -64,4 +64,13 @@ public class BoardDaoImpl implements BoardDao {
 		 return board;
 	}
 
+	  /**insertメソッド
+		 *boardsテーブルへ1件登録する
+		 */
+
+	  public void insert(Board board) {
+		  jdbcTemplate.update("INSERT INTO boards(title,content) Value(?,?)");
+
+		}
+
 }

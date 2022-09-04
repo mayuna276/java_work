@@ -28,4 +28,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.findById(id);
 	}
 
+	@Override
+	//BoardDaoImplへデータを登録する
+	public void save(Board board){
+	}
+
 }
