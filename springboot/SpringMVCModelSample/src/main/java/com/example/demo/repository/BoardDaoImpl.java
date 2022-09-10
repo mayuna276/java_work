@@ -69,7 +69,8 @@ public class BoardDaoImpl implements BoardDao {
 		 */
 
 	  public void insert(Board board) {
-		  jdbcTemplate.update("INSERT INTO boards(title,content) Value(?,?)");
+		  jdbcTemplate.update("INSERT INTO boards(title,content) Value(?,?)",
+				  board.getTitle(),board.getMurmur());
 
 		}
 

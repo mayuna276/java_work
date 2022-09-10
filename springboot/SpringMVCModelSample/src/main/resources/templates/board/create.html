@@ -18,31 +18,32 @@
 
 	<header>
 		<div class="text-center">
-			<p class="fs-1">つぶやき登録</p>
+			<p class="fs-1">つぶやき登録画面</p>
 		</div>
 	</header>
-
-	<div class="mb-3 container" th:object="${board}">
-		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
-		<input type="text" class="form-control"
-			aria-label="Disabled input example" >
-		<div class="mb-3">
-			<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
-			<textarea class="form-control" type="text" placeholder=""
-				aria-label="Disabled input example" ></textarea>
-		</div>
-		<div class="d-flex">
-			<div class="me-3">
-				<a href="#" th:href="@{/board/index}">
-					<button type="button" class="btn btn-secondary">一覧へ戻る</button>
-				</a>
-			</div>
-			<div class="me-3">
-				<a href="#">
-					<button type="button" class="btn btn-primary">つぶやき確認</button>
-				</a>
-			</div>
-		</div>
-	</div>
+    <form method="post" th:action="@{/board/create/confirm}">
+    	<div class="mb-3 container" th:object="${boardForm}">
+    		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
+    		<input type="text" class="form-control" aria-label="Disabled input example" name="title" th:value="*{title}">
+            <div class="text-danger mb-4" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+    		<div class="mb-3">
+    			<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
+    			<textarea class="form-control" type="text" placeholder="" aria-label="Disabled input example" name="murmur" th:field="*{murmur}"></textarea>
+                <div class="text-danger mb-4" th:if="${#fields.hasErrors('murmur')}" th:errors="*{murmur}"></div>
+    		</div>
+    		<div class="d-flex">
+    			<div class="me-3">
+    				<a href="#" th:href="@{/board/index}">
+    					<button type="button" class="btn btn-secondary">一覧へ戻る</button>
+    				</a>
+    			</div>
+    			<div class="me-3">
+    				<a href="#">
+    					<button type="submit" class="btn btn-primary">つぶやき確認</button>
+    				</a>
+    			</div>
+    		</div>
+    	</div>
+     </form>
 </body>
 </html>

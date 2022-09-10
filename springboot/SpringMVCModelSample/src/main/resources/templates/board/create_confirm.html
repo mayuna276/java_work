@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>つぶやき詳細</title>
+<title>つぶやき登録確認画面</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,25 +22,45 @@
 		</div>
 	</header>
 
-	<div class="mb-3 container" th:object="${board}">
+	<div class="mb-3 container" th:object="${boardForm}">
 		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
-		<input type="text" class="form-control"
-			aria-label="Disabled input example" th:value="*{title}" disabled>
+		<input type="text" class="form-control" aria-label="Disabled input example" name="title" th:value="*{title}" disabled>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 			<textarea class="form-control" type="text" placeholder=""
-				aria-label="Disabled input example" th:field="*{murmur}" disabled></textarea>
+				aria-label="Disabled input example" name="murmur" th:field="*{murmur}" disabled></textarea>
 		</div>
 		<div class="d-flex">
+			<form class="me-3" method="post" th:action="@{/board/create}">
+                <input type="hidden" name="title" th:value="*{title}">
+                <input type="hidden" name="murmur" th:value="*{murmur}">
+				<button type="submit" class="btn btn-secondary">戻る</button>
+			</form>
 			<div class="me-3">
-				<a href="#" th:href="@{/board/index}">
-					<button type="button" class="btn btn-secondary">一覧へ戻る</button>
-				</a>
-			</div>
-			<div class="me-3">
-				<a href="#">
-					<button type="button" class="btn btn-primary">登録</button>
-				</a>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">登録</button>
+
+                <!-- 登録確認ダイアログ -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    <!-- ダイアログヘッダー -->
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">つぶやきの登録確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <!-- ダイアログ内容 -->
+                      <div class="modal-body">
+                        つぶやきを登録しますか？
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+                        <form method="post" th:action="@{/board/index}">
+                        <button type="submit" class="btn btn-primary">登録</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 			</div>
 		</div>
 	</div>
