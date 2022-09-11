@@ -102,12 +102,12 @@ public class BoardController {
 	 *
 	 */
 	@PostMapping("/store")
-	public String store(BoardForm boardForm,
+	public String store(@Validated BoardForm boardForm,
 			BindingResult result,
 			Model model,
 			RedirectAttributes redirectAttributes) {
 
-		//model.addAttribute("board", board);
+		     boardService.save(board);
 
 		return "redirect:/board/index";
 	}
