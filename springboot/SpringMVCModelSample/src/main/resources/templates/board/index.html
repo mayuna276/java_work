@@ -23,10 +23,8 @@
 	</header>
 
 	<!-- フラッシュメッセージ -->
-	<div class="alert alert-success" role="alert">
-      <a href="{/board/create/}" class="alert-link">
-      </a>
-      つぶやきの登録に成功しました
+    <div th:unless="${#strings.isEmpty(flash)}">
+      <div class="alert alert-success" role="alert" th:text="${flash}">flash message!!</div>
     </div>
 
 	<table class="table table-striped" border="1" align="center" >

@@ -31,6 +31,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	//BoardDaoImplへデータを登録する
 	public void save(Board board){
+		dao.insert(board);
 	}
 
+	@Override
+	//BoardDaoImplへデータを更新する
+	public void update(Board board){
+		dao.insert(board);
+	}
 }

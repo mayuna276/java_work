@@ -10,4 +10,6 @@ public interface BoardService {
 	Board getBoard(int id);
 
 	void save(Board board);
+
+	void update(Board board);
 }

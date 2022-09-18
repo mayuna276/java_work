@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>つぶやき編集確認画面</title>
+<title>つぶやき登録確認画面</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,7 +18,7 @@
 
 	<header>
 		<div class="text-center">
-			<p class="fs-1">つぶやき編集確認</p>
+			<p class="fs-1">つぶやき登録確認</p>
 		</div>
 	</header>
 
@@ -31,7 +31,7 @@
 				aria-label="Disabled input example" name="murmur" th:field="*{murmur}" disabled></textarea>
 		</div>
 		<div class="d-flex">
-			<form class="me-3" method="post" th:action="@{/board/edit}">
+			<form class="me-3" method="post" th:action="@{/board/create}">
                 <input type="hidden" name="title" th:value="*{title}">
                 <input type="hidden" name="murmur" th:value="*{murmur}">
 				<button type="submit" class="btn btn-secondary">戻る</button>
@@ -39,25 +39,25 @@
 			<div class="me-3">
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">登録</button>
 
-                <!-- 編集確認ダイアログ -->
+                <!-- 登録確認ダイアログ -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                     <!-- ダイアログヘッダー -->
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">つぶやきの更新確認</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">つぶやきの登録確認</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <!-- ダイアログ内容 -->
                       <div class="modal-body">
-                        つぶやきを更新しますか？
+                        つぶやきを登録しますか？
                       </div>
                       <div class="modal-footer">
                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
                         <form method="post" th:action="@{/board/store}">
                           <input type="hidden" name="title" th:value="*{title}">
                           <input type="hidden" name="murmur" th:value="*{murmur}">
-                          <button type="submit" class="btn btn-primary">更新</button>
+                          <button type="submit" class="btn btn-primary">登録</button>
                         </form>
                       </div>
                     </div>

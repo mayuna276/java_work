@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -107,9 +108,70 @@ public class BoardController {
 			Model model,
 			RedirectAttributes redirectAttributes) {
 
-		     boardService.save(board);
+		// バリデーションチェック結果判定
+		if (result.hasErrors()) {
+			model.addAttribute("boardForm", boardForm);
+			return "board/create";
+		}
+
+		// つぶやきEntity定義
+		Board board = new Board();
+		// 現在日時取得
+		LocalDateTime nowTime = LocalDateTime.now();
+		// つぶやきフォームをつぶやき情報Entityへ詰め替え
+		board.setTitle(boardForm.getTitle());
+		board.setMurmur(boardForm.getMurmur());
+		board.setCreate(nowTime);
+		board.setUpdate(nowTime);
+		// つぶやき情報登録
+		boardService.save(board);
+
+		// フラッシュメッセージを設定
+		redirectAttributes.addFlashAttribute("flash", "つぶやきの登録に成功しました");
 
 		return "redirect:/board/index";
 	}
+
+	/**
+	 * つぶやき編集画面
+	 *
+	 */
+	@GetMapping("/edit/{id}")
+	public String edit(@Validated BoardForm boardForm,int id, Model model) {
+
+		Board board = boardService.getBoard(id) ;
+
+		model.addAttribute("board", board);
+
+		return "board/edit";
+	}
+
+	/**
+	 * つぶやき編集確認画面表示
+	 *
+	 */
+	@PostMapping("/edit/confirm")
+	public String editConfirm(@Validated BoardForm boardForm,
+			BindingResult result, int id,
+			Model model) {
+		// バリデーションチェック結果判定
+		if (result.hasErrors()) {
+			model.addAttribute("boardForm", boardForm);
+			return "board/edit";
+		}
+
+		return "board/edit_confirm";
+	}
+
+	/**
+	 * つぶやき編集画面へ戻る
+	 *
+	 */
+	@PostMapping("/edit/{id}")
+	public String editGoBack(BoardForm boardForm, int id, Model model) {
+		return "board/edit";
+	}
+
+
 
 }

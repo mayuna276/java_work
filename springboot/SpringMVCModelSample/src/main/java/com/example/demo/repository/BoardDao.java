@@ -8,4 +8,8 @@ public interface BoardDao {
 	List<Board> findAll();
 
 	Board findById(int id);
+
+	void insert(Board board);
+
+	void update(Board board);
 }

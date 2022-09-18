@@ -14,6 +14,7 @@ public class Board {
 	private String title;
 	private String murmur;
 	private LocalDateTime update;
+	private LocalDateTime create;
 
 	// getter
 
@@ -33,6 +34,11 @@ public class Board {
 		return update;
 	}
 
+	public LocalDateTime getCreate() {
+		return create;
+	}
+
+
 	//setter
 	public void setId(int id) {
 		this.id = id;
@@ -48,5 +54,9 @@ public class Board {
 
 	public void setUpdate(LocalDateTime update) {
 		this.update = update;
+	}
+
+	public void setCreate(LocalDateTime create) {
+		this.create = create;
 	}
 }
