@@ -12,4 +12,6 @@ public interface BoardService {
 	void save(Board board);
 
 	void update(Board board);
+
+	void delete(int id);
 }

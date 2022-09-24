@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Board;
@@ -137,11 +138,18 @@ public class BoardController {
 	 *
 	 */
 	@GetMapping("/edit/{id}")
-	public String edit(@Validated BoardForm boardForm,int id, Model model) {
+	public String edit(BoardForm boardForm, @PathVariable int id, Model model) {
 
-		Board board = boardService.getBoard(id) ;
+		// つぶやき情報を取得
+		Board board = boardService.getBoard(id);
 
-		model.addAttribute("board", board);
+		// つぶやきフォームへ詰め替え
+		boardForm.setTitle(board.getTitle()); // タイトル
+		boardForm.setMurmur(board.getMurmur()); // つぶやき
+
+		// モデルに設定
+		model.addAttribute("boardForm", boardForm);
+		model.addAttribute("boardId", id);
 
 		return "board/edit";
 	}
@@ -152,13 +160,19 @@ public class BoardController {
 	 */
 	@PostMapping("/edit/confirm")
 	public String editConfirm(@Validated BoardForm boardForm,
-			BindingResult result, int id,
+			BindingResult result,
+			@RequestParam("boardId") int id,
 			Model model) {
 		// バリデーションチェック結果判定
 		if (result.hasErrors()) {
+			// モデルに設定
 			model.addAttribute("boardForm", boardForm);
+			model.addAttribute("boardId", id);
 			return "board/edit";
 		}
+		// モデルに設定
+		model.addAttribute("boardForm", boardForm);
+		model.addAttribute("boardId", id);
 
 		return "board/edit_confirm";
 	}
@@ -168,10 +182,70 @@ public class BoardController {
 	 *
 	 */
 	@PostMapping("/edit/{id}")
-	public String editGoBack(BoardForm boardForm, int id, Model model) {
+	public String editGoBack(BoardForm boardForm, @PathVariable int id, Model model) {
+		// モデルに設定
+		model.addAttribute("boardForm", boardForm);
+		model.addAttribute("boardId", id);
+
 		return "board/edit";
 	}
 
+	/**
+	 * つぶやき更新処理
+	 *
+	 */
+	@PostMapping("/update")
+	public String update(@Validated BoardForm boardForm,
+			BindingResult result,
+			@RequestParam("boardId") int id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
 
+		// バリデーションチェック結果判定
+		if (result.hasErrors()) {
+			// モデルに設定
+			model.addAttribute("boardForm", boardForm);
+			model.addAttribute("boardId", id);
+			return "board/edit";
+		}
 
+		// つぶやきEntity定義
+		Board board = new Board();
+		// 現在日時取得
+		LocalDateTime nowTime = LocalDateTime.now();
+		// つぶやきフォームをつぶやき情報Entityへ詰め替え
+		board.setId(id);
+		board.setTitle(boardForm.getTitle());
+		board.setMurmur(boardForm.getMurmur());
+		board.setUpdate(nowTime);
+		// つぶやき情報登録
+		boardService.update(board);
+
+		// フラッシュメッセージを設定
+		redirectAttributes.addFlashAttribute("flash", "つぶやきの更新に成功しました");
+
+		return "redirect:/board/index";
+	}
+
+	/**
+	 * つぶやき削除処理
+	 *
+	 */
+	@PostMapping("/delete")
+	public String delete(@RequestParam("boardId") int id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+
+		// つぶやきEntity定義
+		Board board = new Board();
+		board.setId(id);
+
+		// つぶやき情報削除
+		boardService.delete(id);
+
+		// フラッシュメッセージを設定
+		redirectAttributes.addFlashAttribute("flash", "つぶやきの削除に成功しました");
+
+		return "redirect:/board/index";
+		}
 }

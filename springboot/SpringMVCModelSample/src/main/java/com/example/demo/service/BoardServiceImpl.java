@@ -39,4 +39,10 @@ public class BoardServiceImpl implements BoardService {
 	public void update(Board board){
 		dao.insert(board);
 	}
+
+	@Override
+	//BoardDaoImplのデータを削除する
+	public void delete(int id){
+		dao.deleteById(id);
+	}
 }

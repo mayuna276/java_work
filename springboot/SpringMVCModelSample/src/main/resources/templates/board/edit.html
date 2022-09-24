@@ -21,6 +21,7 @@
 			<p class="fs-1">つぶやき編集</p>
 		</div>
 	</header>
+    <form method="post" th:action="@{/board/edit/confirm}">
     	<div class="mb-3 container" th:object="${boardForm}">
     		<label for="exampleFormControlInput1" class="form-label">タイトル</label>
     		<input type="text" class="form-control"
@@ -32,9 +33,10 @@
     				aria-label="Disabled input example" name="murmur" th:field="*{murmur}"></textarea>
                 <div class="text-danger mb-4" th:if="${#fields.hasErrors('murmur')}" th:errors="*{murmur}"></div>
     		</div>
+            <input type="hidden" name="boardId" th:value="${boardId}">
     		<div class="d-flex">
     			<div class="me-3">
-    				<a href="#" th:href="@{/board/show}">
+    				<a href="#" th:href="@{/board/show/{id}(id=${boardId})}">
     					<button type="button" class="btn btn-secondary">詳細へ戻る</button>
     				</a>
     			</div>
@@ -45,5 +47,6 @@
     			</div>
     		</div>
     	</div>
+      </form>
 </body>
 </html>

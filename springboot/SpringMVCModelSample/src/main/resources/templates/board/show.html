@@ -38,13 +38,35 @@
 				</a>
 			</div>
 			<div class="me-3">
-				<a href="@{/board/edit/{id}(id=${list.id})}}">
+				<a th:href="@{/board/edit/{id}(id=${board.id})}">
 					<button type="button" class="btn btn-primary">編集</button>
 				</a>
 			</div>
 			<div class="me-3">
-				<a href="#">
+				<a th:href="@{/board/delete">
 					<button type="button" class="btn btn-danger">削除</button>
+
+                <!-- 削除確認ダイアログ -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    <!-- ダイアログヘッダー -->
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">つぶやきの削除確認</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <!-- ダイアログ内容 -->
+                      <div class="modal-body">
+                        つぶやきを本当に削除しますか？
+                      </div>
+                      <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+                        <form method="post" th:action="@{/board/delete}">
+                          <input type="hidden" name="title" th:value="*{title}">
+                          <input type="hidden" name="murmur" th:value="*{murmur}">
+                          <input type="hidden" name="boardId" th:value="${boardId}">
+                          <button type="submit" class="btn btn-primary">削除</button>
+                        </form>
 				</a>
 			</div>
 		</div>

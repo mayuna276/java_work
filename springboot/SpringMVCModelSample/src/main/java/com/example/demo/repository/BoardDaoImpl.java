@@ -74,13 +74,23 @@ public class BoardDaoImpl implements BoardDao {
 			jdbcTemplate.update(sql, board.getTitle(), board.getMurmur(), board.getCreate(), board.getUpdate());
 		}
 
-	  /**updateメソッド
+		/**updateメソッド
 		 *boardsテーブルへデータを更新する
 		 */
 
-	  public void update(Board board) {
+		public void update(Board board) {
 			// sql定義
-			String sql = "UPDATE boards(title, content,  updated_at) VALUES (?, ?, ?)";
-			jdbcTemplate.update(sql, board.getTitle(), board.getMurmur(), board.getUpdate());
+			String sql = "UPDATE boards SET title = ?, content = ?, updated_at = ? WHERE id = ?";
+			jdbcTemplate.update(sql, board.getTitle(), board.getMurmur(), board.getUpdate(), board.getId());
+		}
+
+		/**deleteByIdメソッド
+		 *boardsテーブルのデータを削除する
+		 */
+
+		public void deleteById(int id) {
+			// sql定義
+			String sql = "DELETE FROM boards WHERE id = ?";
+			jdbcTemplate.update(sql, id);
 		}
 }
