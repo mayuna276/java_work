@@ -236,11 +236,6 @@ public class BoardController {
 			Model model,
 			RedirectAttributes redirectAttributes) {
 
-		// つぶやきEntity定義
-		Board board = new Board();
-		board.setId(id);
-
-		// つぶやき情報削除
 		boardService.delete(id);
 
 		// フラッシュメッセージを設定

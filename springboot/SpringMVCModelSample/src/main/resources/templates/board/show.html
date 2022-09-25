@@ -44,8 +44,7 @@
 			</div>
 			<div class="me-3">
 				<form method="post" th:action="@{/board/delete}">
-					<div class="mb-3 container" th:object="${boardForm}">
-						<button type="button" class="btn btn-danger">削除</button>
+						<button type="submit" class="btn btn-danger">削除</button>
 
 						<!-- 削除確認ダイアログ -->
 						<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -74,6 +73,5 @@
 				</form>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
